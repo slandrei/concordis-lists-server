@@ -19,7 +19,10 @@ use App\Http\Controllers\ListItemApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ApiDummyController;
 
-Route::get('/test', [\App\Http\Controllers\ApiDummyController::class, 'index']);
+
+Route::group(['middleware' => ['cors']], function() {
+    Route::get('/test', [\App\Http\Controllers\ApiDummyController::class, 'index']);
+});
 
 //Route::get('/shared_lists/{id}', [SharedListsApiController::class, 'index']);
 
@@ -30,7 +33,7 @@ Route::get('/test', [\App\Http\Controllers\ApiDummyController::class, 'index']);
 
 
 // Protected routes
-Route::group(['middleware' => ['auth:sanctum']], function(){
+Route::group(['middleware' => ['auth:sanctum', 'cors']], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Shared lists
