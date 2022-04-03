@@ -47,11 +47,17 @@ class AuthController extends Controller
         //Check if user exists
         $user = User::where('email', $fields['email'])->first();
 
+        if(!$user){
+            return \response([
+                'message' => 'User not found!'
+            ], 200);
+        }
+
         //Check password
-        if(!$user || !Hash::check($fields['password'], $user->password)){
-            \response([
-                'message' => 'Bad credentials'
-            ], 401); // Unauthorized status
+        if(Hash::check($fields['password'], $user->password) === false){
+            return \response([
+                'message' => 'Wrong password!'
+            ], 200);
         }
 
         $token = $user->createToken('myapptoken')->plainTextToken;
