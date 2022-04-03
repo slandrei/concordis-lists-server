@@ -65,7 +65,8 @@ class AuthController extends Controller
         return response([
             'user' => $user,
             'token' => $token
-        ], 201);
+        ], 201)
+            ->header("Access-Control-Allow-Origin", "*");
 
 
     }
