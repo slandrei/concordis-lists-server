@@ -22,6 +22,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::defaultStringLength(191);
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->increments("id");
             $table->morphs('tokenable');
