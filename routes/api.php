@@ -20,17 +20,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ApiDummyController;
 
 
-
-
-
-//Route::get('/shared_lists/{id}', [SharedListsApiController::class, 'index']);
-
-// List items
-//Route::get('/list_items/{id}', [ListItemApiController::class, 'index']);
-
-
-
-
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum', 'cors']], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -62,6 +51,7 @@ Route::group(['middleware' => ['cors']], function() {
 });
 
 Route::middleware('cors')->get('/test', [ApiDummyController::class, 'index']);
+Route::middleware('cors')->post('/testpost', [ApiDummyController::class, 'postReq']);
 Route::middleware('cors')->post('/login', [AuthController::class, 'login']);
 Route::get('/test2', [ApiDummyController::class, 'index']);
 

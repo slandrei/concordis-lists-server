@@ -25,4 +25,11 @@ class ApiDummyController extends Controller
             'success' => 'da da da'
         ]);
     }
+
+
+    public function postReq(Request $request){
+        return response([
+            'post' => 'post request'
+        ]);
+    }
 }
