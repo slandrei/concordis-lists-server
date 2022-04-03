@@ -48,21 +48,21 @@ class AuthController extends Controller
         $user = User::where('email', $fields['email'])->first();
 
         if(!$user){
-            return \response([
+            return response([
                 'message' => 'User not found!'
             ], 200);
         }
 
         //Check password
         if(Hash::check($fields['password'], $user->password) === false){
-            return \response([
+            return response([
                 'message' => 'Wrong password!'
             ], 200);
         }
 
         $token = $user->createToken('myapptoken')->plainTextToken;
 
-        return \response([
+        return response([
             'user' => $user,
             'token' => $token
         ], 201);
