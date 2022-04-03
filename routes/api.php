@@ -62,6 +62,7 @@ Route::group(['middleware' => ['cors']], function() {
 });
 
 Route::middleware('cors')->get('/test', [ApiDummyController::class, 'index']);
+Route::middleware('cors')->post('/login', [AuthController::class, 'login']);
 Route::get('/test2', [ApiDummyController::class, 'index']);
 
 Route::any("/", function(){
