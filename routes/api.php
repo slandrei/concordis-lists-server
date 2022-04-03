@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth:sanctum', 'cors']], function(){
 //Public routes
 Route::group(['middleware' => ['cors']], function() {
     Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/login', [AuthController::class, 'login']);
+    //Route::post('/login', [AuthController::class, 'login']);
     Route::post('/search', [AuthController::class, 'search']);
 
     Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
