@@ -25,15 +25,13 @@ class AuthController extends Controller
         ]);
 
         if($user){
-            //$token = $user->createToken('myapptoken')->plainTextToken;
-
-            return \response([
+            return response([
                 'user' => $user,
                 //'token' => $token
             ], 201);
         }
 
-        return \response([
+        return response([
             'message' => 'Register failed!'
         ]);
     }
@@ -65,8 +63,7 @@ class AuthController extends Controller
         return response([
             'user' => $user,
             'token' => $token
-        ], 201)
-            ->header("Access-Control-Allow-Origin", "*");
+        ], 201);
 
 
     }
@@ -74,7 +71,7 @@ class AuthController extends Controller
     public function logout(Request $request){
         auth()->user()->tokens()->delete();
 
-        return \response([
+        return response([
             'message' => 'Logged out'
         ]);
     }
@@ -85,20 +82,20 @@ class AuthController extends Controller
                 'email' => 'required|string|email',
             ]);
         }catch(\Exception $exception){
-            return \response(['found' => false]);
+            return response(['found' => false]);
         }
 
         $user = User::where('email', $fields['email'])->first();
 
         if($user){
-            return \response([
+            return response([
                     'found' => true,
                     'id'    => $user->id,
                     'name'  => $user->name
-                ])->header('Access-Control-Allow-Origin', '*');
+                ]);
 
         }
 
-        return \response(['found' => false]);
+        return response(['found' => false]);
     }
 }
