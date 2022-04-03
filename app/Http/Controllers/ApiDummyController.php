@@ -23,6 +23,6 @@ class ApiDummyController extends Controller
     public function index(Request $request){
         return response([
             'success' => 'da da da'
-        ])->header('Access-Control-Allow-Origin', '*');
+        ]);
     }
 }

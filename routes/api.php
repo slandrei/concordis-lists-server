@@ -21,7 +21,7 @@ use App\Http\Controllers\ApiDummyController;
 
 
 Route::group(['middleware' => ['cors']], function() {
-    Route::get('/test', [\App\Http\Controllers\ApiDummyController::class, 'index']);
+    Route::get('/test', [ApiDummyController::class, 'index']);
 });
 
 //Route::get('/shared_lists/{id}', [SharedListsApiController::class, 'index']);
