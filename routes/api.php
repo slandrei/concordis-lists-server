@@ -60,7 +60,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('cors')->get('/test', [ApiDummyController::class, 'index']);
-
+Route::get('/test2', [ApiDummyController::class, 'index']);
 
 Route::any("/", function(){
     return [
