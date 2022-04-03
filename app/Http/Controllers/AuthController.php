@@ -94,7 +94,7 @@ class AuthController extends Controller
                     'found' => true,
                     'id'    => $user->id,
                     'name'  => $user->name
-                ]);
+                ])->header('Access-Control-Allow-Origin', '*');
 
         }
 
