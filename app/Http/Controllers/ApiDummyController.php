@@ -32,7 +32,8 @@ class ApiDummyController extends Controller
 
         return response([
             'post' => 'post request',
-            "inputs" => $input
+            "inputs" => $input,
+            "req" => $request
         ]);
     }
 }
