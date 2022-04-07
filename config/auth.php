@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [ // what's the different with 'web' ?
+            'driver' => 'token', // where is this driver?
+            'provider' => 'users', // where is users provider? i can't find it in config/app.php
+        ],
     ],
 
     /*
