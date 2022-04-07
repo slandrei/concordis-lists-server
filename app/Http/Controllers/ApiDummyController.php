@@ -32,7 +32,7 @@ class ApiDummyController extends Controller
 
         return response([
             'post' => 'post request',
-            "inputs" => $toDecode,
+            "json" => $toDecode[0],
             "req" => $request
         ]);
     }
