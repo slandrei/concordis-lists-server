@@ -21,7 +21,7 @@ use App\Http\Controllers\ApiDummyController;
 
 
 // Protected routes
-Route::group(['middleware' => ['auth:sanctum', 'cors']], function(){
+Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Shared lists
