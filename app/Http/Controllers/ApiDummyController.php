@@ -28,11 +28,11 @@ class ApiDummyController extends Controller
 
 
     public function postReq(Request $request){
-        $input = $request->input();
+        $toDecode = $request->all();
 
         return response([
             'post' => 'post request',
-            "inputs" => $input,
+            "inputs" => $toDecode,
             "req" => $request
         ]);
     }
