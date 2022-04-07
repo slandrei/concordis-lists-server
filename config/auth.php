@@ -40,9 +40,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'sanctum' => [ // what's the different with 'web' ?
-            'driver' => 'token', // where is this driver?
-            'provider' => 'personal_access_tokens', // where is users provider? i can't find it in config/app.php
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],
+        'sanctum' => [
+            'driver' => 'token',
+            'provider' => 'users',
         ],
     ],
 
