@@ -28,7 +28,7 @@ class ApiDummyController extends Controller
 
 
     public function postReq(Request $request){
-        $toDecode = $request->isJson();
+        $toDecode = $request->json();
 
         return response([
             'post' => 'post request',
