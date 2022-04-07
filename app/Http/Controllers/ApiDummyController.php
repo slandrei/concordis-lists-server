@@ -34,6 +34,6 @@ class ApiDummyController extends Controller
             'post' => 'post request',
             "json" => $toDecode,
             "req" => $request
-        ]);
+        ])->header("Access-Control-Allow-Origin", '*');
     }
 }
