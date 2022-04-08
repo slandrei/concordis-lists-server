@@ -18,6 +18,6 @@ class Cors
     {
         return $next($request)
             ->header('Access-Control-Allow-Origin', 'http://192.168.100.9:19006')
-            ->header('Access-Control-Allow-Credentials', true);
+            ->header('Access-Control-Allow-Credentials', "true");
     }
 }
