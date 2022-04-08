@@ -41,13 +41,14 @@ return [
             'provider' => 'users',
         ],
         'api' => [
+            'driver' => 'passport',//instead of token
+            'provider' => 'users',
+            'hash' => false,
+        ],
+/*        'sanctum' => [
             'driver' => 'token',
             'provider' => 'users',
-        ],
-        'sanctum' => [
-            'driver' => 'token',
-            'provider' => 'users',
-        ],
+        ],*/
     ],
 
     /*
