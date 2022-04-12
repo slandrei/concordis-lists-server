@@ -48,12 +48,12 @@
             "@php artisan key:generate --ansi"
         ],
         "post-install-cmd": [
+            "php artisan vendor:publish --provider=\"Laravel\\Sanctum\\SanctumServiceProvider\"",
             "php artisan clear-compiled",
             "php artisan route:cache",
             "php artisan config:clear",
             "php artisan config:cache",
-            "chmod -R 777 public/",
-            "chmod -R 777 app/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php"
+            "chmod -R 777 public/"
         ]
     },
     "extra": {
