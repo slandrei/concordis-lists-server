@@ -1,4 +1,6 @@
 <?php
+use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
+
 
 return [
 
@@ -75,10 +77,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-/*        'personal_access_tokens' => [
+        'personal_access_tokens' => [
              'driver' => 'eloquent',
-             'table' => 'App\Models\User::class',
-        ],*/
+             'model' => SanctumPersonalAccessToken::class,
+        ],
     ],
 
     /*
