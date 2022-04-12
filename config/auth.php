@@ -40,16 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-/*        'api' => [
+        'api' => [
             'driver' => 'token',
-            'provider' => 'users',
-            'hash' => true,
-        ],*/
-        'sanctum' => [
+            'provider' => 'personal_access_tokens',
+            'hash' => false,
+        ],
+/*        'sanctum' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
-        ],
+        ],*/
     ],
 
     /*
@@ -75,10 +75,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+/*        'personal_access_tokens' => [
+             'driver' => 'eloquent',
+             'table' => 'App\Models\User::class',
+        ],*/
     ],
 
     /*
