@@ -23,6 +23,7 @@ use App\Http\Controllers\ApiDummyController;
 // Protected routes
 Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/checkauth', [AuthController::class, 'checkAuth']);
 
     // Shared lists
     Route::post('/shared_lists/{id}', [SharedListsApiController::class, 'index']);

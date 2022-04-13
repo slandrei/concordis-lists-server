@@ -98,4 +98,14 @@ class AuthController extends Controller
 
         return response(['found' => false]);
     }
+
+    public function checkAuth(Request $request){
+        $input = $request->all();
+
+        return \response([
+            "inputs" => $input
+        ]);
+
+
+    }
 }
