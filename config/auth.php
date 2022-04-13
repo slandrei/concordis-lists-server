@@ -49,7 +49,7 @@ return [
         ],*/
         'sanctum' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'personal_access_tokens',
             'hash' => false,
         ],
     ],
