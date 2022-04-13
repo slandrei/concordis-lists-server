@@ -49,8 +49,8 @@ return [
         ],*/
         'sanctum' => [
             'driver' => 'token',
-            'provider' => 'personal_access_tokens',
-            'hash' => false,
+            'provider' => 'users',
+            'hash' => true,
         ],
     ],
 
