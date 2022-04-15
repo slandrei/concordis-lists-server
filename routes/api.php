@@ -25,7 +25,7 @@ use \App\Http\Middleware\EnsureTokenIsValid;
 Route::post('/checkauth', [AuthController::class, 'checkAuth']);
 
 // Protected routes
-Route::group(['middleware' => EnsureTokenIsValid::class], function(){
+Route::middleware(EnsureTokenIsValid::class)->group(function(){
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Shared lists
@@ -41,6 +41,8 @@ Route::group(['middleware' => EnsureTokenIsValid::class], function(){
     Route::put('/list_items/{id}', [ListItemApiController::class, 'update']);
     Route::delete('/list_items/{id}', [ListItemApiController::class, 'delete']);
 
+
+    Route::post('/check', [ApiDummyController::class, 'check']);
 });
 
 //Public routes
@@ -48,7 +50,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/search', [AuthController::class, 'search']);
 
-Route::post('/check', [ApiDummyController::class, 'check'])->middleware(EnsureTokenIsValid::class);
+//Route::post('/check', [ApiDummyController::class, 'check'])->middleware(EnsureTokenIsValid::class);
 
 
 // TEST routes

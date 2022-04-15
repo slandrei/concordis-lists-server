@@ -26,17 +26,6 @@ class ApiDummyController extends Controller
         ]);
     }
 
-
-    public function postReq(Request $request){
-        $toDecode = $request->input();
-
-        return response([
-            'post' => 'post request',
-            "json" => $toDecode,
-            "req" => $request
-        ])->header("Access-Control-Allow-Origin", 'http://localhost:19006/');
-    }
-
     public function check(Request $request){
         $header = $request->header('Authorization');
 
