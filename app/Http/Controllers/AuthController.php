@@ -74,7 +74,9 @@ class AuthController extends Controller
     public function logout(Request $request){
         //auth()->user()->tokens()->delete();
 
-        $id = SanctumPersonalAccessToken::findToken()['tokenable_id'];
+        $token = $request->header('Authorization');
+
+        $id = SanctumPersonalAccessToken::findToken($token)['tokenable_id'];
 
         $user = User::find($id);
 
