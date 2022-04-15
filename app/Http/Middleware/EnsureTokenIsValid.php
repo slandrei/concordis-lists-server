@@ -21,7 +21,7 @@ class EnsureTokenIsValid
 
         $found = SanctumPersonalAccessToken::findToken($header);
 
-        if( true ){
+        if( ! $found ){
             return response([
                 'sla_message' => "Authorization failed!",
                 "found" => $found

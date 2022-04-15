@@ -25,7 +25,7 @@ use \App\Http\Middleware\EnsureTokenIsValid;
 
 // Protected routes
 Route::group(['middleware' => 'auth:sanctum'], function(){
-    Route::post('/logout', [AuthController::class, 'logout']);
+//    Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/checkauth', [AuthController::class, 'checkAuth']);
 
     // Shared lists
@@ -64,6 +64,7 @@ Route::middleware(['cors'])->group(function () {
 });
 
 Route::post('/check', [ApiDummyController::class, 'check'])->middleware(EnsureTokenIsValid::class);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware(EnsureTokenIsValid::class);
 
 Route::any("/", function(){
     return [

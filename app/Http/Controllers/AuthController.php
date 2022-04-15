@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
 
 class AuthController extends Controller
 {
@@ -71,13 +72,20 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request){
-        auth()->user()->tokens()->delete();
+        //auth()->user()->tokens()->delete();
 
-        $user = auth()->user();
+        $id = SanctumPersonalAccessToken::findToken()['tokenable_id'];
+
+        $user = User::find($id);
+
+        if($user){
+            $user->tokens()->delete();
+        }
 
         return response([
             'message' => 'Logged out',
-            "user" => $user
+            'id' => $id,
+            'user' => $user
         ]);
     }
 
