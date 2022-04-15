@@ -22,11 +22,11 @@ use App\Http\Controllers\ApiDummyController;
 use \App\Http\Middleware\EnsureTokenIsValid;
 
 
+Route::post('/checkauth', [AuthController::class, 'checkAuth']);
 
 // Protected routes
 Route::group(['middleware' => EnsureTokenIsValid::class], function(){
-//    Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/checkauth', [AuthController::class, 'checkAuth']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
     // Shared lists
     Route::post('/shared_lists/{id}', [SharedListsApiController::class, 'index']);
@@ -45,24 +45,14 @@ Route::group(['middleware' => EnsureTokenIsValid::class], function(){
 
 //Public routes
 Route::post('/register', [AuthController::class, 'register']);
-//Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 Route::post('/search', [AuthController::class, 'search']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::middleware('cors')->get('/test', [ApiDummyController::class, 'index']);
-//Route::middleware('cors')->post('/testpost', [ApiDummyController::class, 'postReq']);
-Route::middleware('cors')->post('/login', [AuthController::class, 'login']);
-Route::get('/test2', [ApiDummyController::class, 'index']);
-
-Route::middleware(['cors'])->group(function () {
-    Route::post('/testpost', [ApiDummyController::class, 'postReq']);
-});
-
 Route::post('/check', [ApiDummyController::class, 'check'])->middleware(EnsureTokenIsValid::class);
-Route::post('/logout', [AuthController::class, 'logout'])->middleware(EnsureTokenIsValid::class);
+
+
+// TEST routes
+//Route::post('/logout', [AuthController::class, 'logout'])->middleware(EnsureTokenIsValid::class);
 
 Route::any("/", function(){
     return [
