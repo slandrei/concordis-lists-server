@@ -16,10 +16,11 @@ class EnsureTokenIsValid
      */
     public function handle(Request $request, Closure $next)
     {
+        $header = $request->header('Authorization');
 
-        if( ! $request->input('token')){
+        if( ! $header){
             return response([
-                'sla_message' => "Token not valid!"
+                'sla_message' => "Authorization failed!"
             ]);
         }
 
