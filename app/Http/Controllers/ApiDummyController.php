@@ -38,7 +38,10 @@ class ApiDummyController extends Controller
     }
 
     public function check(Request $request){
+        $header = $request->header('Authorization');
+
         return response([
+            "Authorization" => $header,
             'message' => "Mission passed! :)"
         ]);
     }

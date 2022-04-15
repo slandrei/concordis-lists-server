@@ -16,6 +16,7 @@ class EnsureTokenIsValid
      */
     public function handle(Request $request, Closure $next)
     {
+
         if( ! $request->input('token')){
             return response([
                 'sla_message' => "Token not valid!"
