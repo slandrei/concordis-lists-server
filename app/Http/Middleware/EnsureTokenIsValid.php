@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class EnsureTokenIsValid
 {
@@ -17,14 +17,13 @@ class EnsureTokenIsValid
      */
     public function handle(Request $request, Closure $next)
     {
-        $header = $request->header('Authorization');
+        $token = $request->header('Authorization');
 
-        $found = SanctumPersonalAccessToken::findToken($header);
+        $found = PersonalAccessToken::findToken($token);
 
         if( ! $found ){
             return response([
-                'sla_message' => "Authorization failed!",
-                "found" => $found
+                'middleware' => "Authorization failed!",
             ]);
         }
 
