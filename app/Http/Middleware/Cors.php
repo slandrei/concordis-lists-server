@@ -17,7 +17,7 @@ class Cors
     public function handle(Request $request, Closure $next)
     {
         return $next($request)
-            ->header('Access-Control-Allow-Origin', 'http://192.168.100.9:19006')
+            ->header('Access-Control-Allow-Origin', '*')
             ->header('Access-Control-Allow-Credentials', "true");
     }
 }
