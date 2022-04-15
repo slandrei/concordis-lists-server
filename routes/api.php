@@ -24,7 +24,7 @@ use \App\Http\Middleware\EnsureTokenIsValid;
 
 
 // Protected routes
-Route::group(['middleware' => 'auth:sanctum'], function(){
+Route::group(['middleware' => EnsureTokenIsValid::class], function(){
 //    Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/checkauth', [AuthController::class, 'checkAuth']);
 
@@ -44,14 +44,12 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 });
 
 //Public routes
-Route::group(['middleware' => ['cors']], function() {
-    Route::post('/register', [AuthController::class, 'register']);
-    //Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/search', [AuthController::class, 'search']);
+Route::post('/register', [AuthController::class, 'register']);
+//Route::post('/login', [AuthController::class, 'login']);
+Route::post('/search', [AuthController::class, 'search']);
 
-    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-        return $request->user();
-    });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
 Route::middleware('cors')->get('/test', [ApiDummyController::class, 'index']);

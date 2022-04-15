@@ -24,6 +24,7 @@ class EnsureTokenIsValid
         if( ! $found ){
             return response([
                 'middleware' => "Authorization failed!",
+                'success' => false
             ]);
         }
 

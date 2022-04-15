@@ -84,8 +84,7 @@ class AuthController extends Controller
 
         return response([
             'message' => 'Logged out',
-            'id' => $id,
-            'user' => $user
+            'success' => true
         ]);
     }
 
