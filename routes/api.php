@@ -19,6 +19,9 @@ use App\Http\Controllers\ListItemApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ApiDummyController;
 
+use \App\Http\Middleware\EnsureTokenIsValid;
+
+
 
 // Protected routes
 Route::group(['middleware' => 'auth:sanctum'], function(){
@@ -60,7 +63,7 @@ Route::middleware(['cors'])->group(function () {
     Route::post('/testpost', [ApiDummyController::class, 'postReq']);
 });
 
-Route::post('/check', [ApiDummyController::class, 'check']);
+Route::post('/check', [ApiDummyController::class, 'check'])->middleware(EnsureTokenIsValid::class);
 
 Route::any("/", function(){
     return [
