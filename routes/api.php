@@ -60,6 +60,8 @@ Route::middleware(['cors'])->group(function () {
     Route::post('/testpost', [ApiDummyController::class, 'postReq']);
 });
 
+Route::post('/check', [ApiDummyController::class, 'check']);
+
 Route::any("/", function(){
     return [
         'message' => 'Wrong route path.'

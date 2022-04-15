@@ -36,4 +36,10 @@ class ApiDummyController extends Controller
             "req" => $request
         ])->header("Access-Control-Allow-Origin", 'http://localhost:19006/');
     }
+
+    public function check(Request $request){
+        return response([
+            'message' => "Mission passed! :)"
+        ]);
+    }
 }
