@@ -48,14 +48,16 @@ class AuthController extends Controller
 
         if(!$user){
             return response([
-                'message' => 'User not found!'
+                'message' => 'User not found!',
+                'success' => false
             ], 200);
         }
 
         //Check password
         if(Hash::check($fields['password'], $user->password) === false){
             return response([
-                'message' => 'Wrong password!'
+                'message' => 'Wrong password!',
+                'success' => false
             ], 200);
         }
 
@@ -65,7 +67,8 @@ class AuthController extends Controller
 
         return response([
             'user' => $user,
-            'token' => $token
+            'token' => $token,
+            'success' => true
         ], 201);
 
 
