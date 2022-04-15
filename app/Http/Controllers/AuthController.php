@@ -60,6 +60,8 @@ class AuthController extends Controller
 
         $token = $user->createToken('myapptoken')->plainTextToken;
 
+        $user->api_roken = $token;
+
         return response([
             'user' => $user,
             'token' => $token
@@ -71,8 +73,11 @@ class AuthController extends Controller
     public function logout(Request $request){
         auth()->user()->tokens()->delete();
 
+        $user = auth()->user();
+
         return response([
-            'message' => 'Logged out'
+            'message' => 'Logged out',
+            "user" => $user
         ]);
     }
 
