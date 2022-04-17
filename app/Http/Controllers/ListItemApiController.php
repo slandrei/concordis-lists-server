@@ -50,7 +50,6 @@ class ListItemApiController extends Controller
             if($passed){
                 return response([
                     'success'=> true,
-                    "the_request" => $request->all(),
                     ...$item->toArray()
                 ]);
             }
