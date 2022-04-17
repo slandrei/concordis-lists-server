@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('list_id');
             $table->string('text', 200);
             $table->integer('qty')->unsigned()->default(1);
+            $table->boolean('done')->default(false);
 
             $table->foreign('list_id')
             ->references('id')->on('shared_lists')
