@@ -28,18 +28,39 @@ class ListItemApiController extends Controller
             "text" => $fields["text"]
         );
 
-        return ListItem::create($item);
+        $newItem = ListItem::create($item);
+
+        if($newItem){
+            return response([
+                'success'=> true,
+                ...$newItem->toArray()
+            ]);
+        }
+        else{
+            return response(['message'=>'FAILED! Could not create item!'], 200);
+        }
     }
 
     public function update(Request $request, $id){
         $item = ListItem::find($id);
 
         if($item){
-            $item->update($request->all());
-            return $item;
+            $passed = $item->update($request->all());
+
+            if($passed){
+                return response([
+                    'success'=> true,
+                    "the_request" => $request->all(),
+                    ...$item->toArray()
+                ]);
+            }
+            else{
+                return response(['message'=>'Update failed!'], 200);
+            }
+
         }
 
-        return response(['message'=>'Update item failed'], 404);
+        return response(['message'=>'Update item failed. Item not found!'], 404);
     }
 
     public function delete(Request $request, $id){

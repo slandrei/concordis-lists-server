@@ -9,7 +9,7 @@ class ListItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['list_id', 'text', 'qty'];
+    protected $fillable = ['list_id', 'text', 'qty', 'done'];
 
     public static function updateOrCreate($item)
     {
