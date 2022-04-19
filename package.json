@@ -2,13 +2,14 @@
     "private": true,
     "scripts": {
         "dev": "nodemon web-socket-server/server",
+        "wsprod": "node web-socket-server/server",
         "development": "mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
-        "postinstall": "npm run web-socket-server/server"
+        "postinstall": "npm run wsprod"
     },
     "devDependencies": {
         "axios": "^0.25",
