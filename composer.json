@@ -53,7 +53,6 @@
             "php artisan config:clear",
             "php artisan config:cache",
             "chmod -R 777 public/",
-            "npm run dev"
         ]
     },
     "extra": {
