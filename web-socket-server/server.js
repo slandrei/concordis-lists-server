@@ -28,7 +28,6 @@ const io = socketio(server, {
     cors: {origin: '*'}
 });
 
-
 io.on('connection', socket => {
     console.log('Client connected: ' + socket.id);
 
